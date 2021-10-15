@@ -1,10 +1,13 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.container{
+html, body, #app, #app>div {
+  height: 100%
+}
+.container {
   margin: 0 auto;
   width: 90%;
 }
@@ -12,7 +15,20 @@
 header {
   width: 100%;
   padding: 0px 4%;
-  background: #FF9933;
+  background: #ff9933;
+}
+
+footer {
+  width: 100%;
+  padding: 0px 4%;
+  background: #50361c;
+  position: absolute;
+  bottom: 0;
+}
+
+footer p {
+  text-align: center;
+  color: #fdf3d4;
 }
 
 #overlay {
@@ -21,7 +37,7 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 
   display: flex;
   align-items: center;
@@ -43,4 +59,45 @@ header {
   width: 100%;
   padding: 10px;
   font-size: 20px;
+}
+
+/* createBOX */
+
+.createBox {
+  margin: 20px 0;
+  height: 100%;
+}
+
+.createBox .createButton {
+  text-align: center;
+  padding: 30px;
+  margin: 0 auto;
+}
+
+.createButton button {
+  height: 50px;
+  width: 200px;
+}
+
+/* table */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+  width: 100%;
+}
+
+table tr {
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+
+table tr:hover {
+  background-color: #fdf3d4;
+}
+
+table th,
+table td {
+  text-align: center;
+  padding: 15px 0;
 }
