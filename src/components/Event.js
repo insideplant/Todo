@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import AppContext from '../contexts/AppContext'
 
-const Event = ({dispatch,event}) =>{
+const Event = ({event}) =>{
+  const {dispatch, handleEditClick } = useContext(AppContext)
   const id = event.id
   const handleClickDeleteButton =() => {
     dispatch({type: 'DELETE_EVENT', id })
@@ -8,13 +10,13 @@ const Event = ({dispatch,event}) =>{
   return (
     <tr>
       <td>{id}</td>
-      <td><button >{event.status}</button></td>
+      <td></td>
       <td>{event.date}</td>
       <td>{event.task}</td>
       <td></td>
       <td></td>
       <td>
-        <button>edit</button>
+        <button onClick={handleEditClick}>edit</button>
         <button onClick={handleClickDeleteButton}>ゴミ箱</button>
       </td>
     </tr>

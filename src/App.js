@@ -1,55 +1,60 @@
 import React, { useState, useReducer } from 'react'
 import "./styles.css";
-import Modal from './components/Modal';
-import Event from './components/Event'
-import reducer from './reducers'
+import AddModal from './components/AddModal';
+import EditModal from './components/EditModal';
+import reducer from './reducers';
+import Events from './components/Events';
+import AppContext from './contexts/AppContext';
 
 const App = () => {
   const [modal, setModal] = useState(false);
-  const [state, dispatch] = useReducer(reducer, [])
-  const [status, setStatus] = useReducer(reducer,"TODO");
 
-  const changeFlag= (status) => {
-    switch(status){
-      case 'TODO':
-        return setStatus("DOING")
-      case 'DOING':
-        return setStatus("DONE")
-      case 'DONE':
-        return setStatus("TODO")
-    }
+  const [state, dispatch] = useReducer(reducer, [])
+  const [isEditing, setIsEditing] = useState(false)
+  const [currentTodo, setCurrentTodo] = useState({})
+
+  // const [status, setStatus] = useReducer(reducer,"TODO");
+
+  // const changeFlag= (status) => {
+  //   switch(status){
+  //     case 'TODO':
+  //       return setStatus("DOING")
+  //     case 'DOING':
+  //       return setStatus("DONE")
+  //     case 'DONE':
+  //       return setStatus("TODO")
+  //   }
+  // }
+
+  const handleEditClick = (state) => {
+    setIsEditing(true)
+    setModal(true)
+    setCurrentTodo({...state})
   }
+  
 
   return (
-    <>
+    <AppContext.Provider value={{dispatch, handleEditClick}}>
       <div className="createBox">
+        {isEditing ? (
+          <EditModal
+            currentTodo = {currentTodo}
+            setCurrentTodo = {setCurrentTodo}
+            modal = {modal}
+          />
+        ) : (
+          <AddModal 
+            modal={modal} 
+            setModal={setModal} 
+          />
+        )}
         <h2>ToDo List</h2>
-        <Modal modal={modal} setModal={setModal} dispatch={dispatch} state={state} status={status}/>
         <div className="createButton">
           <button onClick={()=>setModal(true)}>Create a new Task</button>
         </div>
       </div>
-
-      <div className="todoTable">
-        <table>
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Status</th>
-              <th>Limit</th>
-              <th>Task</th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-              { state.map((event, index) => (<Event key={index} event={event} dispatch={dispatch}/>))}
-          </tbody>
-        </table>
-      </div>
-
-    </>
+      <Events state={state} dispatch={dispatch} />
+    </AppContext.Provider>
   )
 }
 

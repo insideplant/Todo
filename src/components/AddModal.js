@@ -1,6 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import AppContext from '../contexts/AppContext'
 
-function Modal({status, modal, setModal, dispatch, state}){
+
+function AddModal({
+  modal,
+  setModal,
+}){
+  const { dispatch } = useContext(AppContext)
   const [task, setTask] = useState('')
   const [body, setBody] = useState('')
   const [date, setDate] = useState('')
@@ -9,14 +15,11 @@ function Modal({status, modal, setModal, dispatch, state}){
     e.preventDefault()
     dispatch({
       type: 'CREATE_EVENT',
-      status,
       date,
       task,
       body
     })
-
   }
-  console.log(state)
   
   if (modal) {
     return (
@@ -36,7 +39,7 @@ function Modal({status, modal, setModal, dispatch, state}){
               <input type="textbox" id="body"value={body} onChange={e => setBody(e.target.value)}/>
             </div>
 
-            <button onClick={addEvent} status={status}>Create a ToDo</button> <br />
+            <button onClick={addEvent} >Create a ToDo</button> <br />
             <button onClick={()=>setModal(false)}>close</button>
           </form>
         </div>
@@ -47,4 +50,4 @@ function Modal({status, modal, setModal, dispatch, state}){
   }
 }
 
-export default Modal
+export default AddModal
