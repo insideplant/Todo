@@ -26,10 +26,10 @@ const App = () => {
   //   }
   // }
 
-  const handleEditClick = (state) => {
+  const handleEditClick = (event) => {
     setIsEditing(true)
     setModal(true)
-    setCurrentTodo({...state})
+    setCurrentTodo({...event})
   }
   
 

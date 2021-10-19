@@ -16,7 +16,7 @@ const Event = ({event}) =>{
       <td></td>
       <td></td>
       <td>
-        <button onClick={handleEditClick}>edit</button>
+        <button onClick={() => handleEditClick(event)}>edit</button>
         <button onClick={handleClickDeleteButton}>ゴミ箱</button>
       </td>
     </tr>

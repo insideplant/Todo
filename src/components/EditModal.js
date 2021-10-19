@@ -27,15 +27,15 @@ function EditModal({
           <form id="content">
             <div>
               <label htmlFor="date">Limit Date</label><br />
-              <input type="date" id="date" value={currentTodo.date} onChange={e => setCurrentTodo(...currentTodo, {date: e.target.value})}/>
+              <input type="date" id="date" value={currentTodo.date} onChange={e => setCurrentTodo({...currentTodo, date: e.target.value})}/>
             </div>
             <div>
               <label htmlFor="task">To do</label><br />
-              <input type="text" id="task" value={currentTodo.task} onChange={e => setCurrentTodo(...currentTodo, {task: e.target.value})}/>
+              <input type="text" id="task" value={currentTodo.task} onChange={e => setCurrentTodo({...currentTodo, task: e.target.value})}/>
             </div>
             <div>
               <label htmlFor="body">詳細</label><br />
-              <input type="textbox" id="body"value={currentTodo.body} onChange={e => setCurrentTodo(...currentTodo, {body: e.target.value})}/>
+              <input type="textbox" id="body"value={currentTodo.body} onChange={e => setCurrentTodo({...currentTodo, body: e.target.value})}/>
             </div>
 
             <button onClick={onEditInputChange} >Update a ToDo</button> <br />
