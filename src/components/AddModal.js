@@ -19,6 +19,10 @@ function AddModal({
       task,
       body
     })
+    setModal(false)
+    setDate("")
+    setTask("")
+    setBody("")
   }
   
   if (modal) {

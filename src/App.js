@@ -41,6 +41,8 @@ const App = () => {
             currentTodo = {currentTodo}
             setCurrentTodo = {setCurrentTodo}
             modal = {modal}
+            setIsEditing = {setIsEditing}
+            setModal={setModal} 
           />
         ) : (
           <AddModal 

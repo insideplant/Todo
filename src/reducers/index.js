@@ -9,7 +9,7 @@ const events = (state = [], action) => {
     case 'UPDATE_EVENT':
       const updateEvent = {id: action.id, date: action.date, task: action.task, body: action.body}
       const updateState = state.map((event)=>{
-        return event.id ===action.id? updateEvent : state;
+        return event.id ===action.id? updateEvent : event;
       })
       return [...updateState]
     case 'DELETE_EVENT':

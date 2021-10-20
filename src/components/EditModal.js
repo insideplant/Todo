@@ -5,7 +5,8 @@ function EditModal({
   modal,
   setModal,
   currentTodo,
-  setCurrentTodo
+  setCurrentTodo,
+  setIsEditing
 }){
   const { dispatch } = useContext(AppContext)
   const onEditInputChange = (e) => {
@@ -17,6 +18,8 @@ function EditModal({
       task: currentTodo.task,
       body: currentTodo.body
     })
+    setModal(false)
+    setIsEditing(false)
   }
   console.log(currentTodo)
   
@@ -39,7 +42,7 @@ function EditModal({
             </div>
 
             <button onClick={onEditInputChange} >Update a ToDo</button> <br />
-            <button onClick={()=>setModal(false)}>close</button>
+            <button onClick={()=>{setModal(false); setIsEditing(false);}}>close</button>
           </form>
         </div>
       </>
