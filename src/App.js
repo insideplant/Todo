@@ -5,6 +5,7 @@ import EditModal from './components/EditModal';
 import reducer from './reducers';
 import Events from './components/Events';
 import AppContext from './contexts/AppContext';
+import SortButton from './components/Sortbutton';
 
 const App = () => {
   const [modal, setModal] = useState(false);
@@ -12,6 +13,8 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, [])
   const [isEditing, setIsEditing] = useState(false)
   const [currentTodo, setCurrentTodo] = useState({})
+
+  const KEYS = ["id","status","limit","task"];
 
   // const [status, setStatus] = useReducer(reducer,"TODO");
 
@@ -31,7 +34,7 @@ const App = () => {
     setModal(true)
     setCurrentTodo({...event})
   }
-  
+
 
   return (
     <AppContext.Provider value={{dispatch, handleEditClick}}>
@@ -42,12 +45,12 @@ const App = () => {
             setCurrentTodo = {setCurrentTodo}
             modal = {modal}
             setIsEditing = {setIsEditing}
-            setModal={setModal} 
+            setModal={setModal}
           />
         ) : (
-          <AddModal 
-            modal={modal} 
-            setModal={setModal} 
+          <AddModal
+            modal={modal}
+            setModal={setModal}
           />
         )}
         <h2>ToDo List</h2>
@@ -55,6 +58,14 @@ const App = () => {
           <button onClick={()=>setModal(true)}>Create a new Task</button>
         </div>
       </div>
+      {
+        KEYS.map((key, index) => (
+        <SortButton
+          key={index}
+          sortbutton={key} />
+        ))
+      }
+
       <Events state={state} dispatch={dispatch} />
     </AppContext.Provider>
   )
