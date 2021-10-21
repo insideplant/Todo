@@ -4,8 +4,11 @@
   box-sizing: border-box;
 }
 
-html, body, #app, #app>div {
-  height: 100%
+html,
+body,
+#app,
+#app > div {
+  height: 100%;
 }
 .container {
   margin: 0 auto;
@@ -84,6 +87,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
   table-layout: fixed;
+  margin-top: 10px;
   width: 100%;
 }
 
@@ -100,4 +104,10 @@ table th,
 table td {
   text-align: center;
   padding: 15px 0;
+}
+
+button {
+  width: 60px;
+  height: 25px;
+  margin-right: 10px;
 }
