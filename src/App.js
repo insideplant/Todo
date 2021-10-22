@@ -24,6 +24,8 @@ const App = () => {
 
   let sortedStates = useMemo(() => {
     let _sortedStates = state;
+    console.log(_sortedStates)
+    console.log(sort)
     if (sort.key) {
       _sortedStates = _sortedStates.sort((a,b) => {
         a = a[sort.key];
@@ -44,8 +46,6 @@ const App = () => {
   }, [sort, state])
 
   const handleSort = (sortName) => {
-    console.log('click : ' + sortName);
-    console.log(sort.sortName)
     if (sort.key === sortName) {
       setSort({ ...sort, order: -sort.order });
     } else {

@@ -14,6 +14,7 @@ function EditModal({
     dispatch({
       type: 'UPDATE_EVENT',
       id: currentTodo.id,
+      status: currentTodo.status,
       limit: currentTodo.limit,
       task: currentTodo.task,
       body: currentTodo.body
