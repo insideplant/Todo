@@ -4,7 +4,6 @@ import Event from "./Event"
 const Events = ({state, dispatch}) => {
 
   return(
-    <div className="todoTable">
       <table>
         <thead>
           <tr>
@@ -21,7 +20,6 @@ const Events = ({state, dispatch}) => {
           { state.map((event, index) => (<Event key={index} event={event} dispatch={dispatch}/>))}
         </tbody>
       </table>
-    </div>
   )
 }
 

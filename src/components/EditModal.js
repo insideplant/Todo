@@ -14,7 +14,7 @@ function EditModal({
     dispatch({
       type: 'UPDATE_EVENT',
       id: currentTodo.id,
-      date: currentTodo.date,
+      limit: currentTodo.limit,
       task: currentTodo.task,
       body: currentTodo.body
     })
@@ -30,7 +30,7 @@ function EditModal({
           <form id="content">
             <div>
               <label htmlFor="date">Limit Date</label><br />
-              <input type="date" id="date" value={currentTodo.date} onChange={e => setCurrentTodo({...currentTodo, date: e.target.value})}/>
+              <input type="date" id="date" value={currentTodo.limit} onChange={e => setCurrentTodo({...currentTodo, limit: e.target.value})}/>
             </div>
             <div>
               <label htmlFor="task">To do</label><br />

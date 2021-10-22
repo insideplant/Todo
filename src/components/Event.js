@@ -11,7 +11,7 @@ const Event = ({event}) =>{
     <tr>
       <td>{id}</td>
       <td></td>
-      <td>{event.date}</td>
+      <td>{event.limit}</td>
       <td>{event.task}</td>
       <td></td>
       <td></td>

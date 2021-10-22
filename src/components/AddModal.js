@@ -9,18 +9,18 @@ function AddModal({
   const { dispatch } = useContext(AppContext)
   const [task, setTask] = useState('')
   const [body, setBody] = useState('')
-  const [date, setDate] = useState('')
+  const [limit, setLimit] = useState('')
 
   const addEvent = e => {
     e.preventDefault()
     dispatch({
       type: 'CREATE_EVENT',
-      date,
+      limit,
       task,
       body
     })
     setModal(false)
-    setDate("")
+    setLimit("")
     setTask("")
     setBody("")
   }
@@ -32,7 +32,7 @@ function AddModal({
           <form id="content">
             <div>
               <label htmlFor="date">Limit Date</label><br />
-              <input type="date" id="date" value={date} onChange={e => setDate(e.target.value)}/>
+              <input type="date" id="date" value={limit} onChange={e => setLimit(e.target.value)}/>
             </div>
             <div>
               <label htmlFor="task">To do</label><br />

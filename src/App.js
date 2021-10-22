@@ -1,4 +1,5 @@
-import React, { useState, useReducer,useMemo } from 'react'
+
+import React, { useState, useReducer, useMemo, useEffect } from 'react'
 import "./styles.css";
 import AddModal from './components/AddModal';
 import EditModal from './components/EditModal';
@@ -9,10 +10,11 @@ import SortButton from './components/Sortbutton';
 
 const App = () => {
   const [modal, setModal] = useState(false);
-  const [state, dispatch] = useReducer(reducer, [])
+  const [state, dispatch] = useReducer(reducer,initialState)
   const [isEditing, setIsEditing] = useState(false)
   const [currentTodo, setCurrentTodo] = useState({})
   const [sort, setSort] = useState({});
+  const APP_KEY = "appWithRedux"
 
   const KEYS = ["id","status","limit","task"];
 
@@ -49,25 +51,19 @@ const App = () => {
     }
   };
 
-  // const [status, setStatus] = useReducer(reducer,"TODO");
-
-  // const changeFlag= (status) => {
-  //   switch(status){
-  //     case 'TODO':
-  //       return setStatus("DOING")
-  //     case 'DOING':
-  //       return setStatus("DONE")
-  //     case 'DONE':
-  //       return setStatus("TODO")
-  //   }
-  // }
 
   const handleEditClick = (event) => {
     setIsEditing(true)
     setModal(true)
     setCurrentTodo({...event})
   }
-
+  
+  const appState = localStorage.getItem(APP_KEY)
+  const initialState = appState? JSON.parse(appState) : []
+  
+  useEffect (() => {
+    localStorage.setItem(APP_KEY, JSON.stringify(state))
+  },[state])
 
   return (
     <AppContext.Provider value={{dispatch, handleEditClick}}>
@@ -87,9 +83,9 @@ const App = () => {
           />
         )}
         <h2>ToDo List</h2>
-        <div className="createButton">
-          <button onClick={()=>setModal(true)}>Create a new Task</button>
-        </div>
+      <div className="createButton">
+        <button onClick={()=>setModal(true)}>Create a new Task</button>
+      </div>
       </div>
       {
         KEYS.map((key, index) => (
@@ -99,8 +95,9 @@ const App = () => {
           handleSort={handleSort} />
         ))
       }
-
-      <Events state={sortedStates} dispatch={dispatch} />
+      <div className="tableBox">
+        <Events state={sortedStates} dispatch={dispatch} />
+      </div>
     </AppContext.Provider>
   )
 }
