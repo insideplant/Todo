@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Sortbutton = ({sortbutton, handleSort}) => (
-  <button onClick={() => handleSort(sortbutton)}>
-    {sortbutton.toUpperCase()}
+const Sortbutton = ({sortName, handleSort}) => (
+  <button onClick={() => handleSort(sortName)}>
+    {sortName.toUpperCase()}
   </button>
 );
 

@@ -9,14 +9,18 @@ import AppContext from './contexts/AppContext';
 import SortButton from './components/Sortbutton';
 
 const App = () => {
+  
+  const APP_KEY = "appWithRedux"
+  const appState = localStorage.getItem(APP_KEY)
+  const initialState = appState? JSON.parse(appState) : [];
   const [modal, setModal] = useState(false);
   const [state, dispatch] = useReducer(reducer,initialState)
   const [isEditing, setIsEditing] = useState(false)
   const [currentTodo, setCurrentTodo] = useState({})
   const [sort, setSort] = useState({});
-  const APP_KEY = "appWithRedux"
+  
 
-  const KEYS = ["id","status","limit","task"];
+  const SORTNAMES = ["id","status","limit","task"];
 
   let sortedStates = useMemo(() => {
     let _sortedStates = state;
@@ -39,27 +43,24 @@ const App = () => {
     return _sortedStates;
   }, [sort, state])
 
-  const handleSort = (key) => {
-    console.log('click : ' + key);
-    if (sort.key === key) {
+  const handleSort = (sortName) => {
+    console.log('click : ' + sortName);
+    console.log(sort.sortName)
+    if (sort.key === sortName) {
       setSort({ ...sort, order: -sort.order });
     } else {
       setSort({
-        key: key,
+        key: sortName,
         order: 1
       })
     }
   };
-
 
   const handleEditClick = (event) => {
     setIsEditing(true)
     setModal(true)
     setCurrentTodo({...event})
   }
-  
-  const appState = localStorage.getItem(APP_KEY)
-  const initialState = appState? JSON.parse(appState) : []
   
   useEffect (() => {
     localStorage.setItem(APP_KEY, JSON.stringify(state))
@@ -88,10 +89,10 @@ const App = () => {
       </div>
       </div>
       {
-        KEYS.map((key, index) => (
+        SORTNAMES.map((sortName, index) => (
         <SortButton
           key={index}
-          sortbutton={key}
+          sortName={sortName}
           handleSort={handleSort} />
         ))
       }
