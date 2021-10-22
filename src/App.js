@@ -7,6 +7,7 @@ import reducer from './reducers';
 import Events from './components/Events';
 import AppContext from './contexts/AppContext';
 import SortButton from './components/Sortbutton';
+import Show from './components/Show';
 
 const App = () => {
   
@@ -14,6 +15,7 @@ const App = () => {
   const appState = localStorage.getItem(APP_KEY)
   const initialState = appState? JSON.parse(appState) : [];
   const [modal, setModal] = useState(false);
+  const [show, setShow] = useState(false);
   const [state, dispatch] = useReducer(reducer,initialState)
   const [isEditing, setIsEditing] = useState(false)
   const [currentTodo, setCurrentTodo] = useState({})
@@ -67,7 +69,7 @@ const App = () => {
   },[state])
 
   return (
-    <AppContext.Provider value={{dispatch, handleEditClick}}>
+    <AppContext.Provider value={{dispatch, handleEditClick, setShow}}>
       <div className="createBox">
         {isEditing ? (
           <EditModal
@@ -84,10 +86,16 @@ const App = () => {
           />
         )}
         <h2>ToDo List</h2>
-      <div className="createButton">
-        <button onClick={()=>setModal(true)}>Create a new Task</button>
+        <div className="createButton">
+          <button onClick={()=>setModal(true)}>Create a new Task</button>
+        </div>
       </div>
+      <div>
+        <Show 
+          show={show}
+        />
       </div>
+
       {
         SORTNAMES.map((sortName, index) => (
         <SortButton

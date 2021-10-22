@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import AppContext from '../contexts/AppContext'
 
 const Event = ({event}) =>{
-  const {dispatch, handleEditClick } = useContext(AppContext)
+  const {dispatch, handleEditClick, setShow } = useContext(AppContext)
   const id = event.id
   const status = event.status
   const handleClickDeleteButton =() => {
@@ -20,8 +20,9 @@ const Event = ({event}) =>{
     })
   }
 
+
   return (
-    <tr>
+    <tr onClick={() => setShow(true)}>
       <td>{id}</td>
       <td><button onClick={handleClickStatusButton} className={event.status}>{event.status}</button></td>
       <td>{event.limit}</td>
