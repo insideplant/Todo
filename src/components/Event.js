@@ -23,14 +23,14 @@ const Event = ({event}) =>{
   return (
     <tr>
       <td>{id}</td>
-      <td><button onClick={handleClickStatusButton}>{event.status}</button></td>
+      <td><button onClick={handleClickStatusButton} className={event.status}>{event.status}</button></td>
       <td>{event.limit}</td>
       <td>{event.task}</td>
       <td></td>
       <td></td>
       <td>
         <button onClick={() => handleEditClick(event)}>edit</button>
-        <button onClick={handleClickDeleteButton}>ゴミ箱</button>
+        <button onClick={handleClickDeleteButton}>delete</button>
       </td>
     </tr>
   )

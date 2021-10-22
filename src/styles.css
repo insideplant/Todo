@@ -106,8 +106,24 @@ table td {
 }
 
 
+/* button */
 button {
   width: 60px;
   height: 25px;
   margin-right: 10px;
+}
+
+.TODO {
+  color: #eee;
+  background-color:#ff9933;
+}
+
+.DOING {
+  color:#fff;
+  background-color:#000;
+}
+
+.DONE {
+  color: #fff;
+  background-color:#C0C0C0;
 }

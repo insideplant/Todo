@@ -7,7 +7,7 @@ const events = (state = [], action) => {
       const id = length === 0 ? 1 : state[length -1].id + 1
       return [...state, {id, ...event}]
     case 'UPDATE_EVENT':
-      const updateEvent = {id: action.id, limit: action.limit, task: action.task, body: action.body}
+      const updateEvent = {id: action.id, status: action.status, limit: action.limit, task: action.task, body: action.body}
       const updateState = state.map((event)=>{
         return event.id ===action.id? updateEvent : event;
       })
