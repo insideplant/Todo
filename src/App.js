@@ -63,12 +63,17 @@ const App = () => {
     setCurrentTodo({...event})
   }
   
+  const handleShow = (event) => {
+    setShow(true)
+    setCurrentTodo({...event})
+  }
+  
   useEffect (() => {
     localStorage.setItem(APP_KEY, JSON.stringify(state))
   },[state])
 
   return (
-    <AppContext.Provider value={{dispatch, handleEditClick, setShow}}>
+    <AppContext.Provider value={{dispatch, handleEditClick, handleShow}}>
       <div className="createBox">
         {isEditing ? (
           <EditModal
@@ -92,9 +97,11 @@ const App = () => {
       <div>
         <Show 
           show={show}
+          handleShow={handleShow}
+          currentTodo = {currentTodo}
+          setShow = {setShow}
         />
       </div>
-
       {
         SORTNAMES.map((sortName, index) => (
         <SortButton

@@ -28,8 +28,8 @@ function AddModal({
   if (modal) {
     return (
       <>
-        <div id="overlay">
-          <form id="content">
+        <div className="overlay">
+          <form className="content">
             <div>
               <label htmlFor="date">Limit Date</label><br />
               <input type="date" id="date" value={limit} onChange={e => setLimit(e.target.value)}/>
@@ -43,7 +43,7 @@ function AddModal({
               <input type="textbox" id="body"value={body} onChange={e => setBody(e.target.value)}/>
             </div>
 
-            <button onClick={addEvent} >Create a ToDo</button> <br />
+            <button onClick={addEvent} >Create</button> <br />
             <button onClick={()=>setModal(false)}>close</button>
           </form>
         </div>

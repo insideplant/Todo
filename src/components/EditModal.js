@@ -27,8 +27,8 @@ function EditModal({
   if (modal) {
     return (
       <>
-        <div id="overlay">
-          <form id="content">
+        <div className="overlay">
+          <form className="content">
             <div>
               <label htmlFor="date">Limit Date</label><br />
               <input type="date" id="date" value={currentTodo.limit} onChange={e => setCurrentTodo({...currentTodo, limit: e.target.value})}/>
@@ -42,7 +42,7 @@ function EditModal({
               <input type="textbox" id="body"value={currentTodo.body} onChange={e => setCurrentTodo({...currentTodo, body: e.target.value})}/>
             </div>
 
-            <button onClick={onEditInputChange} >Update a ToDo</button> <br />
+            <button onClick={onEditInputChange} >Update</button> <br />
             <button onClick={()=>{setModal(false); setIsEditing(false);}}>close</button>
           </form>
         </div>
