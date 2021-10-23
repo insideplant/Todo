@@ -4,12 +4,10 @@
   box-sizing: border-box;
 }
 
-html,
-body,
-#app,
-#app > div {
-  height: 100%;
+body {
+  padding-bottom: 50px;
 }
+
 .container {
   margin: 0 auto;
   width: 90%;
@@ -25,7 +23,7 @@ footer {
   width: 100%;
   padding: 0px 4%;
   background: #50361c;
-  /* position: absolute; */
+  position: fixed;
   bottom: 0;
 }
 
@@ -105,7 +103,6 @@ table td {
   padding: 15px 0;
 }
 
-
 /* button */
 button {
   width: 60px;
@@ -115,15 +112,15 @@ button {
 
 .TODO {
   color: #eee;
-  background-color:#ff9933;
+  background-color: #ff9933;
 }
 
 .DOING {
-  color:#fff;
-  background-color:#000;
+  color: #fff;
+  background-color: #000;
 }
 
 .DONE {
   color: #fff;
-  background-color:#C0C0C0;
+  background-color: #c0c0c0;
 }

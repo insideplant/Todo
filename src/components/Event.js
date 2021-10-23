@@ -20,7 +20,6 @@ const Event = ({event}) =>{
     })
   }
 
-
   return (
     <tr onClick={() => setShow(true)}>
       <td>{id}</td>

@@ -25,7 +25,6 @@ const Show = (showModal) => {
         </tbody>
       </table>
     </div>
-
   )
 }
 
