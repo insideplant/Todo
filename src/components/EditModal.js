@@ -34,7 +34,7 @@ function EditModal({
               <input type="date" id="date" value={currentTodo.limit} onChange={e => setCurrentTodo({...currentTodo, limit: e.target.value})}/>
             </div>
             <div>
-              <label htmlFor="task">To do</label><br />
+              <label htmlFor="task">Todo</label><br />
               <input type="text" id="task" value={currentTodo.task} onChange={e => setCurrentTodo({...currentTodo, task: e.target.value})}/>
             </div>
             <div>
@@ -42,8 +42,8 @@ function EditModal({
               <input type="textbox" id="body"value={currentTodo.body} onChange={e => setCurrentTodo({...currentTodo, body: e.target.value})}/>
             </div>
 
-            <button onClick={onEditInputChange} >Update</button> <br />
-            <button onClick={()=>{setModal(false); setIsEditing(false);}}>close</button>
+            <button onClick={onEditInputChange} >UPDATE</button> <br />
+            <button onClick={()=>{setModal(false); setIsEditing(false);}}>CLOSE</button>
           </form>
         </div>
       </>

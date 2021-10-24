@@ -11,7 +11,7 @@ const Show = ({show,currentTodo,setShow}) => {
         <table> 
           <tbody>
             <tr>
-              <td>status</td>
+              <td>Status</td>
               <td>{currentTodo.status}</td>
             </tr>
             <tr>
@@ -23,13 +23,13 @@ const Show = ({show,currentTodo,setShow}) => {
               <td>{currentTodo.task}</td>
             </tr>
             <tr>
-              <td>Body</td>
+              <td>Detail</td>
               <td>{currentTodo.body}</td>
             </tr>
           </tbody>
         </table>
 
-        <button onClick={()=>setShow(false)}>close</button>
+        <button onClick={()=>setShow(false)}>CLOSE</button>
       </div>
     </div>
   )

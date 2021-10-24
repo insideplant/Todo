@@ -22,7 +22,7 @@ const App = () => {
   const [sort, setSort] = useState({});
   
 
-  const SORTNAMES = ["id","status","limit","task"];
+  const SORTNAMES = ["id","status","limit","Todo"];
 
   let sortedStates = useMemo(() => {
     let _sortedStates = state;
@@ -91,7 +91,7 @@ const App = () => {
         )}
         <h1>ToDo List</h1>
         <div className="createButton">
-          <button onClick={()=>setModal(true)}>Create a new Task</button>
+          <button onClick={()=>setModal(true)}>Create a new ToDo</button>
         </div>
       </div>
       <div>

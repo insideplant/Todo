@@ -43,8 +43,8 @@ function AddModal({
               <input type="textbox" id="body"value={body} onChange={e => setBody(e.target.value)}/>
             </div>
 
-            <button onClick={addEvent} >Create</button> <br />
-            <button onClick={()=>setModal(false)}>close</button>
+            <button onClick={addEvent} >CREATE</button> <br />
+            <button onClick={()=>setModal(false)}>CLOSE</button>
           </form>
         </div>
       </>
