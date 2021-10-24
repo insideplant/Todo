@@ -44,7 +44,7 @@ const App = () => {
       console.log(_sortedStates)
     }
     return _sortedStates;
-  }, [sort, state])
+  }, [sort, state]);
 
   const handleSort = (sortName) => {
     if (sort.key === sortName) {
