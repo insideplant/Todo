@@ -3,11 +3,11 @@ import AppContext from '../contexts/AppContext'
 
 
 function AddModal({
-  modal,
-  setModal,
+  isOpenModal,
+  setIsOpenModal,
 }){
   const { dispatch } = useContext(AppContext)
-  const [task, setTask] = useState('')
+  const [todo, setTodo] = useState('')
   const [body, setBody] = useState('')
   const [limit, setLimit] = useState('')
 
@@ -16,16 +16,16 @@ function AddModal({
     dispatch({
       type: 'CREATE_EVENT',
       limit,
-      task,
+      todo,
       body
     })
-    setModal(false)
+    setIsOpenModal(false)
     setLimit("")
-    setTask("")
+    setTodo("")
     setBody("")
   }
   
-  if (modal) {
+  if (isOpenModal) {
     return (
       <>
         <div className="overlay">
@@ -35,16 +35,16 @@ function AddModal({
               <input type="date" id="date" value={limit} onChange={e => setLimit(e.target.value)}/>
             </div>
             <div>
-              <label htmlFor="task">To do</label><br />
-              <input type="text" id="task" value={task} onChange={e => setTask(e.target.value)}/>
+              <label htmlFor="todo">To do</label><br />
+              <input type="text" id="todo" value={todo} onChange={e => setTodo(e.target.value)}/>
             </div>
             <div>
-              <label htmlFor="body">詳細</label><br />
+              <label htmlFor="body">Detail</label><br />
               <input type="textbox" id="body"value={body} onChange={e => setBody(e.target.value)}/>
             </div>
 
-            <button onClick={addEvent} >CREATE</button> <br />
-            <button onClick={()=>setModal(false)}>CLOSE</button>
+            <button onClick={addEvent} >CREATE</button> 
+            <button onClick={()=>setIsOpenModal(false)}>CLOSE</button>
           </form>
         </div>
       </>

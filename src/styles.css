@@ -124,3 +124,8 @@ button {
   color: #fff;
   background-color: #c0c0c0;
 }
+
+/* Show */
+.detail-table {
+  margin: 20px;
+}

@@ -5,7 +5,7 @@ const events = (state = [], action) => {
       const event = { 
         limit: action.limit,
         status: "TODO",
-        task: action.task, 
+        todo: action.todo, 
         body: action.body
       }
       const length = state.length
@@ -16,7 +16,7 @@ const events = (state = [], action) => {
         id: action.id, 
         status: action.status, 
         limit: action.limit,
-        task: action.task,
+        todo: action.todo,
         body: action.body
       }
       const updateState = state.map(event=> event.id ===action.id? updateEvent : event)
@@ -31,7 +31,7 @@ const events = (state = [], action) => {
             id: action.id,
             status: "DOING",
             limit: action.limit,
-            task: action.task,
+            todo: action.todo,
             body: action.body
           }
           const updateState = state.map(event=> event.id ===action.id? updateEvent : event)
@@ -41,7 +41,7 @@ const events = (state = [], action) => {
             id: action.id,
             status: "DONE",
             limit: action.limit,
-            task: action.task,
+            todo: action.todo,
             body: action.body
           }
           const updateState = state.map(event=> event.id ===action.id? updateEvent : event)
@@ -51,7 +51,7 @@ const events = (state = [], action) => {
             id: action.id,
             status: "TODO",
             limit: action.limit,
-            task: action.task,
+            todo: action.todo,
             body: action.body
           }
           const updateState = state.map(event=> event.id ===action.id? updateEvent : event)

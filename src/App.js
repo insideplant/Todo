@@ -6,7 +6,7 @@ import EditModal from './components/EditModal';
 import reducer from './reducers';
 import Events from './components/Events';
 import AppContext from './contexts/AppContext';
-import SortButton from './components/Sortbutton';
+import SortButton from './components/SortButton';
 import Show from './components/Show';
 
 const App = () => {
@@ -14,15 +14,15 @@ const App = () => {
   const APP_KEY = "appWithRedux"
   const appState = localStorage.getItem(APP_KEY)
   const initialState = appState? JSON.parse(appState) : [];
-  const [modal, setModal] = useState(false);
-  const [show, setShow] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isShow, setIsShow] = useState(false);
   const [state, dispatch] = useReducer(reducer,initialState)
   const [isEditing, setIsEditing] = useState(false)
   const [currentTodo, setCurrentTodo] = useState({})
   const [sort, setSort] = useState({});
   
 
-  const SORTNAMES = ["id","status","limit","Todo"];
+  const SORTNAMES = ["id","status","limit","todo"];
 
   let sortedStates = useMemo(() => {
     let _sortedStates = state;
@@ -41,12 +41,12 @@ const App = () => {
           return -1 * sort.order;
         } 
       });
-      console.log(_sortedStates)
     }
     return _sortedStates;
   }, [sort, state]);
 
   const handleSort = (sortName) => {
+    
     if (sort.key === sortName) {
       setSort({ ...sort, order: -sort.order });
     } else {
@@ -59,12 +59,12 @@ const App = () => {
 
   const handleEditClick = (event) => {
     setIsEditing(true)
-    setModal(true)
+    setIsOpenModal(true)
     setCurrentTodo({...event})
   }
   
   const handleShow = (event) => {
-    setShow(true)
+    setIsShow(true)
     setCurrentTodo({...event})
   }
   
@@ -79,27 +79,27 @@ const App = () => {
           <EditModal
             currentTodo = {currentTodo}
             setCurrentTodo = {setCurrentTodo}
-            modal = {modal}
+            isOpenModal = {isOpenModal}
             setIsEditing = {setIsEditing}
-            setModal={setModal}
+            setIsOpenModal={setIsOpenModal}
           />
         ) : (
           <AddModal
-            modal={modal}
-            setModal={setModal}
+            isOpenModal={isOpenModal}
+            setIsOpenModal={setIsOpenModal}
           />
         )}
         <h1>ToDo List</h1>
         <div className="createButton">
-          <button onClick={()=>setModal(true)}>Create a new ToDo</button>
+          <button onClick={()=>setIsOpenModal(true)}>Create a new ToDo</button>
         </div>
       </div>
       <div>
         <Show 
-          show={show}
+          show={isShow}
           handleShow={handleShow}
           currentTodo = {currentTodo}
-          setShow = {setShow}
+          setIsShow = {setIsShow}
         />
       </div>
       {

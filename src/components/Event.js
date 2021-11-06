@@ -15,7 +15,7 @@ const Event = ({event}) =>{
       id, 
       status,
       limit: event.limit,
-      task: event.task,
+      todo: event.todo,
       body: event.body
     })
   }
@@ -25,7 +25,7 @@ const Event = ({event}) =>{
       <td>{id}</td>
       <td><button onClick={handleClickStatusButton} className={event.status}>{event.status}</button></td>
       <td>{event.limit}</td>
-      <td>{event.task}</td>
+      <td>{event.todo}</td>
       <td></td>
       <td>
         <button onClick={() => handleShow(event)}>show</button>

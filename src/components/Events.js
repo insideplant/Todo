@@ -7,10 +7,10 @@ const Events = ({state, dispatch}) => {
       <table>
         <thead>
           <tr>
-            <th>No</th>
-            <th>Status</th>
-            <th>Limit</th>
-            <th>Task</th>
+            <th>ID</th>
+            <th>STATUS</th>
+            <th>LIMIT</th>
+            <th>TODO</th>
             <th></th>
             <th></th>
             <th></th>

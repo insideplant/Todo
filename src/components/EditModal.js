@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import AppContext from '../contexts/AppContext'
 
 function EditModal({
-  modal,
-  setModal,
+  isOpenModal,
+  setIsOpenModal,
   currentTodo,
   setCurrentTodo,
   setIsEditing
@@ -16,15 +16,15 @@ function EditModal({
       id: currentTodo.id,
       status: currentTodo.status,
       limit: currentTodo.limit,
-      task: currentTodo.task,
+      todo: currentTodo.todo,
       body: currentTodo.body
     })
-    setModal(false)
+    setIsOpenModal(false)
     setIsEditing(false)
   }
   console.log(currentTodo)
   
-  if (modal) {
+  if (isOpenModal) {
     return (
       <>
         <div className="overlay">
@@ -34,16 +34,16 @@ function EditModal({
               <input type="date" id="date" value={currentTodo.limit} onChange={e => setCurrentTodo({...currentTodo, limit: e.target.value})}/>
             </div>
             <div>
-              <label htmlFor="task">Todo</label><br />
-              <input type="text" id="task" value={currentTodo.task} onChange={e => setCurrentTodo({...currentTodo, task: e.target.value})}/>
+              <label htmlFor="todo">Todo</label><br />
+              <input type="text" id="todo" value={currentTodo.todo} onChange={e => setCurrentTodo({...currentTodo, todo: e.target.value})}/>
             </div>
             <div>
-              <label htmlFor="body">詳細</label><br />
+              <label htmlFor="body">Detail</label><br />
               <input type="textbox" id="body"value={currentTodo.body} onChange={e => setCurrentTodo({...currentTodo, body: e.target.value})}/>
             </div>
 
-            <button onClick={onEditInputChange} >UPDATE</button> <br />
-            <button onClick={()=>{setModal(false); setIsEditing(false);}}>CLOSE</button>
+            <button onClick={onEditInputChange} >UPDATE</button>
+            <button onClick={()=>{setIsOpenModal(false); setIsEditing(false);}}>CLOSE</button>
           </form>
         </div>
       </>
